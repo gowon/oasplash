@@ -1,0 +1,5 @@
+{
+    "language_tabs": [{ "shell": "cURL" }, { "csharp": "C#" }],
+    "verbose": true,
+    "httpsnippet": true
+  }
