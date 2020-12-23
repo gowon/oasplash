@@ -1499,13 +1499,13 @@ components:
         model:
           type: string
         exposure_time:
-          type: number
-          format: double
+          type: string
         aperture:
           type: number
           format: double
         focal_length:
-          type: integer
+          type: number
+          format: double
         iso:
           type: integer
     Location:
