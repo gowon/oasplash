@@ -35,6 +35,10 @@ tags:
   externalDocs:
     description: Find out more
     url: https://unsplash.com/documentation#topics
+- name: Stats
+  externalDocs:
+    description: Find out more
+    url: https://unsplash.com/documentation#stats
 paths:
   /me:
     get:
@@ -42,9 +46,9 @@ paths:
         - Current user
       security:
         - userAuth: ['read_user']
-      summary: Get the user’s profile
+      summary: Get the user's profile
       description: |
-        Note: To access a user’s private data, the user is required to authorize the read_user scope. Without a Bearer token (i.e. using a Client-ID token) this request will return a 401 Unauthorized response.
+        Note: To access a user's private data, the user is required to authorize the read_user scope. Without a Bearer token (i.e. using a Client-ID token) this request will return a 401 Unauthorized response.
       operationId: getCurrentUser
       responses:
         200:
@@ -58,7 +62,7 @@ paths:
         - Current user
       security:
         - userAuth: ['write_user']
-      summary: Update the current user’s profile
+      summary: Update the current user's profile
       description: |
         Note: This action requires the write_user scope. Without it, it will return a 403 Forbidden response.
       operationId: updateCurrentUser
@@ -117,13 +121,13 @@ paths:
         - Users
       security:
         - publicAuth: []
-      summary: Get a user’s public profile
+      summary: Get a user's public profile
       description: Retrieve public details on a given user.
       operationId: getUser
       parameters:
       - name: username
         in: path
-        description: The user’s username.
+        description: The user's username.
         required: true
         schema:
           type: string
@@ -140,12 +144,12 @@ paths:
         - Users
       security:
         - publicAuth: []
-      summary: Get a user’s portfolio link
+      summary: Get a user's portfolio link
       operationId: getUserPortfolioLink
       parameters:
       - name: username
         in: path
-        description: The user’s username.
+        description: The user's username.
         required: true
         schema:
           type: string
@@ -162,13 +166,13 @@ paths:
         - Users
       security:
         - publicAuth: []
-      summary: List a user’s photos
+      summary: List a user's photos
       description: Get a list of photos uploaded by a user.
       operationId: getUserPhotos
       parameters:
       - name: username
         in: path
-        description: The user’s username.
+        description: The user's username.
         required: true
         schema:
           type: string
@@ -193,7 +197,7 @@ paths:
       - name: stats
         in: query
         description: |
-          Show the stats for each user’s photo. (Optional; default: false)
+          Show the stats for each user's photo. (Optional; default: false)
         schema:
           type: boolean
       - name: resolution
@@ -236,7 +240,7 @@ paths:
       - name: username
         in: path
         description: |
-          The user’s username.
+          The user's username.
         required: true
         schema:
           type: string
@@ -279,13 +283,13 @@ paths:
         - Users
       security:
         - publicAuth: []
-      summary: List a user’s collections
+      summary: List a user's collections
       description: Get a list of collections created by the user.
       operationId: getUserCollections
       parameters:
       - name: username
         in: path
-        description: The user’s username.
+        description: The user's username.
         required: true
         schema:
           type: string
@@ -316,13 +320,13 @@ paths:
         - Users
       security:
         - publicAuth: []
-      summary: Get a user’s statistics
-      description: Retrieve the consolidated number of downloads, views and likes of all user’s photos, as well as the historical breakdown and average of these stats in a specific timeframe (default is 30 days).
+      summary: Get a user's statistics
+      description: Retrieve the consolidated number of downloads, views and likes of all user's photos, as well as the historical breakdown and average of these stats in a specific timeframe (default is 30 days).
       operationId: getUserStatistics
       parameters:
       - name: username
         in: path
-        description: The user’s username.
+        description: The user's username.
         required: true
         schema:
           type: string
@@ -394,7 +398,7 @@ paths:
       parameters:
       - name: id
         in: path
-        description: The photo’s ID.
+        description: The photo's ID.
         required: true
         schema:
           type: string
@@ -416,80 +420,80 @@ paths:
       parameters:
       - name: id
         in: path
-        description: The photo’s ID.
+        description: The photo's ID.
         required: true
         schema:
           type: string
       - name: description
         in: query
-        description: The photo’s description (Optional).
+        description: The photo's description (Optional).
         schema:
           type: string
       - name: show_on_profile
         in: query
-        description: The photo’s visibility (Optional).
+        description: The photo's visibility (Optional).
         schema:
           type: boolean
       - name: tags
         in: query
-        description: The photo’s tags (Optional).
+        description: The photo's tags (Optional).
         schema:
           type: string
       - name: location[latitude]
         in: query
-        description: The photo location’s latitude rounded to 6 decimals. (Optional)
+        description: The photo location's latitude rounded to 6 decimals. (Optional)
         schema:
           type: number
           format: double
       - name: location[longitude]
         in: query
-        description: The photo location’s longitude rounded to 6 decimals. (Optional)
+        description: The photo location's longitude rounded to 6 decimals. (Optional)
         schema:
           type: number
           format: double
       - name: location[name]
         in: query
-        description: The photo’s full location string (including city and country) (Optional)
+        description: The photo's full location string (including city and country) (Optional)
         schema:
           type: string
       - name: location[city]
         in: query
-        description: The photo location’s city (Optional)
+        description: The photo location's city (Optional)
         schema:
           type: string
       - name: location[country]
         in: query
-        description: The photo location’s country (Optional)
+        description: The photo location's country (Optional)
         schema:
           type: string
       - name: exif[make]
         in: query
-        description: Camera’s brand (Optional)
+        description: Camera's brand (Optional)
         schema:
           type: string
       - name: exif[model]
         in: query
-        description: Camera’s model (Optional)
+        description: Camera's model (Optional)
         schema:
           type: string
       - name: exif[exposure_time]
         in: query
-        description: Camera’s exposure time (Optional)
+        description: Camera's exposure time (Optional)
         schema:
           type: string
       - name: exif[aperture_value]
         in: query
-        description: Camera’s aperture value (Optional)
+        description: Camera's aperture value (Optional)
         schema:
           type: string
       - name: exif[focal_length]
         in: query
-        description: Camera’s focal length (Optional)
+        description: Camera's focal length (Optional)
         schema:
           type: string
       - name: exif[iso_speed_ratings]
         in: query
-        description: Camera’s iso (Optional)
+        description: Camera's iso (Optional)
         schema:
           type: string
       responses:
@@ -508,7 +512,7 @@ paths:
       summary: Get a random photo
       description: |
         Retrieve a single random photo, given optional filters.
-        You can’t use the collections and query parameters in the same request
+        You can't use the collections and query parameters in the same request
         When supplying a count parameter - and only then - the response will be an array of photos, even if the value of count is 1.
       operationId: getRandomPhoto
       parameters:
@@ -567,7 +571,7 @@ paths:
         - Photos
       security:
         - publicAuth: []
-      summary: Get a photo’s statistics
+      summary: Get a photo's statistics
       description: |
         Retrieve total number of downloads, views and likes of a single photo, as well as the historical breakdown of these stats in a specific timeframe (default is 30 days).
       operationId: getPhotoStatistics
@@ -605,12 +609,12 @@ paths:
         - publicAuth: []
       summary: Track a photo download
       description: |
-        To abide by the API guidelines, you need to trigger a GET request to this endpoint every time your application performs a download of a photo. To understand what constitutes a download, please refer to the ‘Triggering a download’ guideline.
+        To abide by the API guidelines, you need to trigger a GET request to this endpoint every time your application performs a download of a photo. To understand what constitutes a download, please refer to the ‘Triggering a download' guideline.
       operationId: trackPhotoDownload
       parameters:
       - name: id
         in: path
-        description: The photo’s ID.
+        description: The photo's ID.
         required: true
         schema:
           type: string
@@ -634,7 +638,7 @@ paths:
       parameters:
       - name: id
         in: path
-        description: The photo’s ID.
+        description: The photo's ID.
         required: true
         schema:
           type: string
@@ -650,14 +654,14 @@ paths:
         - Photos
       security:
         - userAuth: ['write_likes']
-      summary: Remove a user’s like of a photo.
+      summary: Remove a user's like of a photo.
       description: |
         This action is idempotent; sending the DELETE request to a single photo multiple times has no additional effect.
       operationId: unlikePhoto
       parameters:
       - name: id
         in: path
-        description: The photo’s ID.
+        description: The photo's ID.
         required: true
         schema:
           type: string
@@ -852,7 +856,7 @@ paths:
           type: string
       - name: description
         in: query
-        description: The collection’s description. (Optional.)
+        description: The collection's description. (Optional.)
         schema:
           type: string
       - name: private
@@ -875,12 +879,12 @@ paths:
         - publicAuth: []
         - userAuth: ['read_collections']
       summary: Get a collection
-      description: Retrieve a single collection. To view a user’s private collections, the read_collections scope is required.
+      description: Retrieve a single collection. To view a user's private collections, the read_collections scope is required.
       operationId: getCollectionById
       parameters:
       - name: id
         in: path
-        description: The collections’s ID.
+        description: The collections's ID.
         required: true
         schema:
           type: string
@@ -902,7 +906,7 @@ paths:
       parameters:
       - name: id
         in: path
-        description: The collection’s ID.
+        description: The collection's ID.
         required: true
         schema:
           type: string
@@ -913,7 +917,7 @@ paths:
           type: string
       - name: description
         in: query
-        description: The collection’s description. (Optional.)
+        description: The collection's description. (Optional.)
         schema:
           type: string
       - name: private
@@ -939,7 +943,7 @@ paths:
       parameters:
       - name: id
         in: path
-        description: The collection’s ID.
+        description: The collection's ID.
         required: true
         schema:
           type: string
@@ -952,13 +956,13 @@ paths:
         - Collections
       security:
         - publicAuth: []
-      summary: Get a collection’s photos
-      description: Retrieve a collection’s photos.
+      summary: Get a collection's photos
+      description: Retrieve a collection's photos.
       operationId: getCollectionPhotos
       parameters:
       - name: id
         in: path
-        description: The collection’s ID.
+        description: The collection's ID.
         required: true
         schema:
           type: string
@@ -995,13 +999,13 @@ paths:
         - Collections
       security:
         - publicAuth: []
-      summary: List a collection’s related collections
+      summary: List a collection's related collections
       description: Retrieve a list of collections related to this one.
       operationId: getRelatedCollections
       parameters:
       - name: id
         in: path
-        description: The collection’s ID.
+        description: The collection's ID.
         required: true
         schema:
           type: string
@@ -1021,12 +1025,12 @@ paths:
       security:
         - userAuth: ['write_collections']
       summary: Add a photo to a collection
-      description: Add a photo to one of the logged-in user’s collections. Requires the write_collections scope. If the photo is already in the collection, this action has no effect.
+      description: Add a photo to one of the logged-in user's collections. Requires the write_collections scope. If the photo is already in the collection, this action has no effect.
       operationId: addPhotoToCollection
       parameters:
       - name: collection_id
         in: path
-        description: The collection’s ID.
+        description: The collection's ID.
         required: true
         schema:
           type: string
@@ -1050,12 +1054,12 @@ paths:
       security:
         - userAuth: ['write_collections']
       summary: Remove a photo from a collection
-      description: Remove a photo from one of the logged-in user’s collections. Requires the write_collections scope.
+      description: Remove a photo from one of the logged-in user's collections. Requires the write_collections scope.
       operationId: removePhotoFromCollection
       parameters:
       - name: collection_id
         in: path
-        description: The collection’s ID.
+        description: The collection's ID.
         required: true
         schema:
           type: string
@@ -1072,19 +1076,61 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/OperationResponse'
+  /topics:
+    get:
+      tags:
+        - Topics
+      security:
+        - publicAuth: []
+      summary: List topics
+      description: Get a single page from the list of all topics.
+      operationId: listTopics
+      parameters:
+      - name: ids
+        in: query
+        description: Limit to only matching topic ids or slugs. (Optional; Comma separated string)
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: |
+          Page number to retrieve. (Optional, default: 1)
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        description: |
+          Number of items per page. (Optional; default: 10)
+        schema:
+          type: integer
+      - name: order_by
+        in: query
+        description: |
+          How to sort the photos. Optional. (Valid values: featured, latest, oldest, position; default: position)
+        schema:
+          $ref: '#/components/schemas/TopicsOrderBy'
+      responses:
+        200:
+          description: Success
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Topic'
   /topics/{id_or_slug}/photos:
     get:
       tags:
         - Topics
       security:
         - publicAuth: []
-      summary: Get a topic’s photos
-      description: Retrieve a topic’s photos.
+      summary: Get a topic's photos
+      description: Retrieve a topic's photos.
       operationId: getTopicPhotos
       parameters:
       - name: id_or_slug
         in: path
-        description: The topics’s ID or slug.
+        description: The topics's ID or slug.
         required: true
         schema:
           type: string
@@ -1121,6 +1167,38 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Photo'
+  /stats/total:
+    get:
+      tags:
+        - Stats
+      security:
+        - publicAuth: []
+      summary: Totals
+      description: Get a list of counts for all of Unsplash.
+      operationId: getTotalStatistics
+      responses:
+        200:
+          description: Success
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TotalStatistics'
+  /stats/month:
+    get:
+      tags:
+        - Stats
+      security:
+        - publicAuth: []
+      summary: Month
+      description: Get the overall Unsplash stats for the past 30 days.
+      operationId: getMonthlyStatistics
+      responses:
+        200:
+          description: Success
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/MonthlyStatistics'
 components:
   schemas:
     Badge:
@@ -1538,6 +1616,103 @@ components:
         created_at:
           type: string
           format: date-time
+    Topic:
+      type: object
+      properties:
+        conver_photo:
+          $ref: '#/components/schemas/Photo'
+        description:
+          type: string
+        ends_at:
+          type: string
+        featured:
+          type: boolean
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/TopicLinks'
+        only_submissions_after:
+          type: string
+        owners:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        published_at:
+          type: string
+          format: date-time
+        slug:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        status:
+          type: string
+        title:
+          type: string
+        top_contributors:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        total_photos:
+          type: integer
+        updated_at:
+          type: string
+          format: date-time
+    TopicLinks:
+      type: object
+      properties:
+        html:
+          type: string
+        photos:
+          type: string
+        self:
+          type: string
+    TotalStatistics:
+      type: object
+      properties:
+        applications:
+          type: integer
+        developers:
+          type: integer
+        downloads:
+          type: integer
+        downloads_per_second:
+          type: integer
+        likes:
+          type: integer
+        photographers:
+          type: integer
+        photos:
+          type: integer
+        pixels:
+          type: integer
+        requests:
+          type: integer
+        views:
+          type: integer
+        views_per_second:
+          type: integer
+    MonthlyStatistics:
+      type: object
+      properties:
+        downloads:
+          type: integer
+        likes:
+          type: integer
+        new_applications:
+          type: integer
+        new_developers:
+          type: integer
+        new_photographers:
+          type: integer
+        new_photos:
+          type: integer
+        new_pixels:
+          type: integer
+        new_requests:
+          type: integer
+        views:
+          type: integer
     Color:
       type: string
       enum:
@@ -1587,6 +1762,16 @@ components:
         - days
       x-ms-enum:
         name: StatResolution
+        modelAsString: false
+    TopicsOrderBy:
+      type: string
+      enum:
+        - featured
+        - latest
+        - oldest
+        - position
+      x-ms-enum:
+        name: OrderBy
         modelAsString: false
   securitySchemes:
     publicAuth:
